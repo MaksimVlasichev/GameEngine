@@ -1,3 +1,6 @@
+using System.Collections;
+using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Drawing;
 
 class Generate
@@ -47,7 +50,6 @@ public class Clas
         return string.Format("Класс: {0}\nЦвет: {1}\nБонус к силе: {2}\nСлучайный бонус: {3}\n", this.Name, this.Color,this.BonusPower,this.CalcBonusClass());
     }
 }
-
 public class Rang
 {
     public Dictionary<string, string> Rangs= new Dictionary<string, string>(){
@@ -83,7 +85,6 @@ public class Rang
         return string.Format("Название: {0}\nРанг: {1}\nСила: {2}\n", this.Name, this.Ranq,this.CalcBonusRang());
     }
 }
-
 public class Ship // класс корабля
 {
     public Clas Clas;
@@ -97,6 +98,24 @@ public class Ship // класс корабля
         Console.WriteLine(Clas.Info()+ Rang.Info());
     }
 }
+public class Player
+{
+    public Ship[] Rezerv;
+    public Player()
+    {
+        Rezerv = new Ship[10];
+    }
+}
+public class Land // класс поля
+{
+    public Ship[] Pole;  // уникальное поле
+
+    public Land()
+    {
+        Pole = new Ship[9];// создаем 9 ячеек под корабли
+    }
+}
+
  class Input // Вход
 {
     public static Land Land;
